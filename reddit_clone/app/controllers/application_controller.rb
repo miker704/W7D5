@@ -1,11 +1,11 @@
 class ApplicationController < ActionController::Base
-    protect_from_forgery with: :expection
+    # protect_from_forgery with: :expection
 
     #chrrlll
     helper_method :current_user, :signed_in?, :require_logged_in
 
     def current_user
-        @current_user ||= User.find_by(session_token: sessions[:session_token])
+        @current_user ||= User.find_by(session_token: session[:session_token])
     end
 
     def require_logged_in
